@@ -52,7 +52,9 @@ function Main({ isLoading, data }: { isLoading: boolean; data: IMovies }) {
           ))}
         </Items>
       )}
-      {movieId !== 0 && <Modal movieId={movieId} setMovieId={setMovieId} />}
+      {movieId !== 0 && (
+        <Modal key={movieId} movieId={movieId} setMovieId={setMovieId} />
+      )}
     </Wrapper>
   );
 }
