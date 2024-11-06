@@ -5,9 +5,11 @@ import Movie from "../components/Movie";
 import Loading from "../components/Loading";
 import Modal from "../components/Modal";
 import { IMovies } from "../types";
+import Search from "./Search";
 
 const Wrapper = styled.main`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: ${(props) => props.theme.home.wrapper.paddingTop};
@@ -23,7 +25,7 @@ const Items = styled(motion.div)`
   align-items: center;
   gap: ${(props) => props.theme.size.md};
   padding: ${(props) => props.theme.size.md};
-  width: 100%;
+  width: 90%;
 `;
 
 const ItemsVariants: Variants = {
@@ -41,15 +43,25 @@ const ItemsVariants: Variants = {
 
 function Main({ isLoading, data }: { isLoading: boolean; data: IMovies }) {
   const [movieId, setMovieId] = useState(0);
+  const [searchText, setSearchText] = useState("");
 
   return (
     <Wrapper>
+      <Search searchText={searchText} setSearchText={setSearchText} />
       {isLoading && <Loading />}
       {!isLoading && (
         <Items variants={ItemsVariants} initial="hidden" animate="visible">
-          {data?.results.map((movie) => (
-            <Movie key={movie.id} movie={movie} setMovieId={setMovieId} />
-          ))}
+          {data?.results
+            .filter((movie) => {
+              if (searchText) {
+                return movie.title.includes(searchText);
+              } else {
+                return true;
+              }
+            })
+            .map((movie) => (
+              <Movie key={movie.id} movie={movie} setMovieId={setMovieId} />
+            ))}
         </Items>
       )}
       <AnimatePresence>

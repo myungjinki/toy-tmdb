@@ -34,7 +34,7 @@ const Tags = styled.div`
   height: 10%;
 `;
 
-const Popularity = styled.div<{ $avg: number }>`
+const Average = styled.div<{ $avg: number }>`
   ${(props) => {
     if (props.$avg < 60) {
       return "background: linear-gradient(90deg, red, white);";
@@ -82,7 +82,7 @@ function Movie({
       <Poster $poster_path={makeImagePath(movie.poster_path)} />
       <Title>{movie.title}</Title>
       <Tags>
-        <Popularity $avg={average}>{average}%</Popularity>
+        <Average $avg={average}>{average}%</Average>
         <Adult>{movie.original_language}</Adult>
       </Tags>
     </Wrapper>

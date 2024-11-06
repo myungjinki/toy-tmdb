@@ -30,7 +30,7 @@ const darkMobileTheme: DefaultTheme = {
   },
   home: {
     wrapper: {
-      paddingTop: "6rem",
+      paddingTop: "9rem",
     },
     items: {
       min: "8rem",
