@@ -1,13 +1,14 @@
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  width: ${(props) => props.theme.loading.size};
-  height: ${(props) => props.theme.loading.size};
-  background-color: ${(props) => props.theme.colors.grey};
-`;
+import { ClipLoader } from "react-spinners";
 
 function Loading() {
-  return <Wrapper>Loading</Wrapper>;
+  return (
+    <ClipLoader
+      color={"#ffffff"}
+      size={150}
+      aria-label="Loading Spinner"
+      data-testid="loader"
+    />
+  );
 }
 
 export default Loading;
