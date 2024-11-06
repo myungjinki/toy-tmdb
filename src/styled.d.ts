@@ -7,23 +7,23 @@ declare module "styled-components" {
     colors: {
       main: string;
       secondary: string;
+      accent: string;
     };
-    position: {
-      header: string;
-    };
-    gapSize: {
+    size: {
+      xs4: string;
+      xs3: string;
+      xs2: string;
       xs: string;
       sm: string;
       md: string;
       lg: string;
       xl: string;
+      xl2: string;
+      xl3: string;
+      xl4: string;
     };
-    fontSize: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
+    header: {
+      wrapper: string;
     };
   }
 }

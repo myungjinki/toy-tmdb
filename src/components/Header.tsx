@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.header`
   position: absolute;
-  top: ${(props) => props.theme.position.header};
+  top: ${(props) => props.theme.header.wrapper};
   text-transform: uppercase;
 `;
 
@@ -12,21 +12,21 @@ const Nav = styled.div``;
 
 const Ul = styled.ul`
   display: flex;
-  gap: ${(props) => props.theme.gapSize.xl};
-  font-size: ${(props) => props.theme.fontSize.xl};
+  gap: ${(props) => props.theme.size.xl4};
+  font-size: ${(props) => props.theme.size.xl};
 `;
 
 const Li = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${(props) => props.theme.gapSize.xs};
+  gap: ${(props) => props.theme.size.xs};
 `;
 
 const Circle = styled(motion.div)`
-  width: 20px;
-  height: 20px;
-  background-color: red;
+  width: ${(props) => props.theme.size.xs3};
+  height: ${(props) => props.theme.size.xs3};
+  background-color: ${(props) => props.theme.colors.accent};
 `;
 
 function Header() {
