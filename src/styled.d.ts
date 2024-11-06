@@ -23,7 +23,11 @@ declare module "styled-components" {
       xl4: string;
     };
     header: {
-      wrapper: string;
+      top: string;
+      padding: string;
+      gap: string;
+      fontSize: string;
+      circle: string;
     };
   }
 }

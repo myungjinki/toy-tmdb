@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.header`
   position: absolute;
-  top: ${(props) => props.theme.header.wrapper};
+  top: ${(props) => props.theme.header.top};
+  padding: ${(props) => props.theme.header.padding};
   text-transform: uppercase;
 `;
 
@@ -12,20 +13,20 @@ const Nav = styled.div``;
 
 const Ul = styled.ul`
   display: flex;
-  gap: ${(props) => props.theme.size.xl4};
-  font-size: ${(props) => props.theme.size.xl};
+  gap: ${(props) => props.theme.header.gap};
+  font-size: ${(props) => props.theme.header.fontSize};
 `;
 
 const Li = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${(props) => props.theme.size.xs};
+  gap: ${(props) => props.theme.size.xs4};
 `;
 
 const Circle = styled(motion.div)`
-  width: ${(props) => props.theme.size.xs3};
-  height: ${(props) => props.theme.size.xs3};
+  width: ${(props) => props.theme.header.circle};
+  height: ${(props) => props.theme.header.circle};
   background-color: ${(props) => props.theme.colors.accent};
 `;
 

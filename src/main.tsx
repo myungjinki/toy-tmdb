@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { darkTheme } from "./theme";
+import { darkMobileTheme } from "./theme";
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
@@ -79,7 +79,7 @@ a {
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={darkMobileTheme}>
         <GlobalStyle />
         <RouterProvider router={router} />
       </ThemeProvider>

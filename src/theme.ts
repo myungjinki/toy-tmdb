@@ -1,13 +1,10 @@
 import { DefaultTheme } from "styled-components";
 
-const darkTheme: DefaultTheme = {
+const darkMobileTheme: DefaultTheme = {
   colors: {
     main: "black",
     secondary: "white",
     accent: "red",
-  },
-  header: {
-    wrapper: "64px",
   },
   size: {
     xs4: "0.5rem",
@@ -22,6 +19,13 @@ const darkTheme: DefaultTheme = {
     xl3: "4rem",
     xl4: "6rem",
   },
+  header: {
+    top: "2rem",
+    padding: "1rem",
+    gap: "1rem",
+    fontSize: "1rem",
+    circle: "0.5rem",
+  },
 };
 
-export { darkTheme };
+export { darkMobileTheme };
