@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { makeImagePath } from "../api";
 import { motion, Variants } from "framer-motion";
-import { IMovie } from "../types";
 
 const Wrapper = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.opacity0};
@@ -34,9 +33,19 @@ const MovieVariants: Variants = {
   },
 };
 
-function Movie({ title, poster_path }: IMovie) {
+function Movie({
+  poster_path,
+  title,
+  id,
+  setMovieId,
+}: {
+  poster_path: string;
+  title: string;
+  id: number;
+  setMovieId: React.Dispatch<React.SetStateAction<number>>;
+}) {
   return (
-    <Wrapper variants={MovieVariants}>
+    <Wrapper variants={MovieVariants} onClick={() => setMovieId(id)}>
       <Poster $poster_path={makeImagePath(poster_path)} />
       <Title>{title}</Title>
     </Wrapper>

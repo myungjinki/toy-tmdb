@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { motion, Variants } from "framer-motion";
 import Movie from "../components/Movie";
 import Loading from "../components/Loading";
-import { IMovie, IMovies } from "../types";
+import Modal from "../components/Modal";
+import { IMovies } from "../types";
 
 const Wrapper = styled.main`
   display: flex;
@@ -38,7 +39,7 @@ const ItemsVariants: Variants = {
 };
 
 function Main({ isLoading, data }: { isLoading: boolean; data: IMovies }) {
-  const [movie, setMovie] = useState<IMovie>(null);
+  const [movieId, setMovieId] = useState(0);
 
   return (
     <Wrapper>
@@ -46,10 +47,11 @@ function Main({ isLoading, data }: { isLoading: boolean; data: IMovies }) {
       {!isLoading && (
         <Items variants={ItemsVariants} initial="hidden" animate="visible">
           {data?.results.map((movie) => (
-            <Movie key={movie.id} {...movie} setMovie={setMovie} />
+            <Movie key={movie.id} {...movie} setMovieId={setMovieId} />
           ))}
         </Items>
       )}
+      {movieId !== 0 && <Modal movieId={movieId} setMovieId={setMovieId} />}
     </Wrapper>
   );
 }

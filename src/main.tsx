@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { darkMobileTheme } from "./theme";
+import { RecoilRoot } from "recoil";
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
@@ -78,11 +79,13 @@ a {
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={client}>
-      <ThemeProvider theme={darkMobileTheme}>
-        <GlobalStyle />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={client}>
+        <ThemeProvider theme={darkMobileTheme}>
+          <GlobalStyle />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );
