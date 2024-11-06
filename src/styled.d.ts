@@ -29,5 +29,13 @@ declare module "styled-components" {
       fontSize: string;
       circle: string;
     };
+    home: {
+      wrapper: {
+        paddingTop: string;
+      };
+    };
+    movie: {
+      size: string;
+    };
   }
 }

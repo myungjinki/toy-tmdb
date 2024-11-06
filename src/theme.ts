@@ -26,6 +26,14 @@ const darkMobileTheme: DefaultTheme = {
     fontSize: "1rem",
     circle: "0.5rem",
   },
+  home: {
+    wrapper: {
+      paddingTop: "8rem",
+    },
+  },
+  movie: {
+    size: "16rem",
+  },
 };
 
 export { darkMobileTheme };
