@@ -64,7 +64,8 @@ table {
 /* Custom CSS */
 body {
 	background-color: ${(props) => props.theme.colors.main};
-	color: ${(props) => props.theme.colors.secondary}
+	color: ${(props) => props.theme.colors.secondary};
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 a {
 	text-decoration: none;
