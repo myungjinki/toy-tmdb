@@ -10,9 +10,10 @@ const Overlay = styled(motion.div)`
 `;
 
 const Detail = styled.div`
-  position: absolute;
+  position: fixed;
   top: 10dvh;
   width: 80vw;
+  max-width: 640px;
   height: 80dvh;
   background-color: grey;
 `;

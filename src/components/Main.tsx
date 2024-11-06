@@ -12,6 +12,7 @@ const Wrapper = styled.main`
   align-items: center;
   margin-top: ${(props) => props.theme.home.wrapper.paddingTop};
   width: 100%;
+  max-width: 1024px;
   min-height: 100%;
 `;
 
