@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { makeImagePath } from "../api";
+import { motion, Variants } from "framer-motion";
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.opacity0};
   width: ${(props) => props.theme.movie.width};
   height: ${(props) => props.theme.movie.height};
@@ -23,6 +24,15 @@ const Title = styled.div`
   height: 10%;
 `;
 
+const MovieVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
 interface IMovieProps {
   title: string;
   poster_path: string;
@@ -30,7 +40,7 @@ interface IMovieProps {
 
 function Movie({ title, poster_path }: IMovieProps) {
   return (
-    <Wrapper>
+    <Wrapper variants={MovieVariants}>
       <Poster $poster_path={makeImagePath(poster_path)} />
       <Title>{title}</Title>
     </Wrapper>

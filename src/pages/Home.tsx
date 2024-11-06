@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Suspense } from "react";
 import Movie from "../components/Movie";
 import Loading from "../components/Loading";
+import { motion, Variants } from "framer-motion";
 
 const Wrapper = styled.main`
   display: flex;
@@ -14,7 +15,7 @@ const Wrapper = styled.main`
   min-height: 100%;
 `;
 
-const Items = styled.div`
+const Items = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
   justify-content: center;
@@ -24,17 +25,31 @@ const Items = styled.div`
   width: 100%;
 `;
 
+const ItemsVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
 function Home() {
   const { isLoading, data } = useQuery(["popular"], getPopular);
   return (
     <Wrapper>
-      <Suspense fallback={<Loading />}>
-        <Items>
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <Items variants={ItemsVariants} initial="hidden" animate="visible">
           {data?.results.map((movie) => (
             <Movie key={movie.id} {...movie} />
           ))}
         </Items>
-      </Suspense>
+      )}
     </Wrapper>
   );
 }
