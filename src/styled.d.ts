@@ -8,6 +8,7 @@ declare module "styled-components" {
       main: string;
       secondary: string;
       accent: string;
+      grey: string;
     };
     size: {
       xs4: string;
@@ -35,6 +36,9 @@ declare module "styled-components" {
       };
     };
     movie: {
+      size: string;
+    };
+    loading: {
       size: string;
     };
   }

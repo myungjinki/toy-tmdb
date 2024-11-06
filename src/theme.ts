@@ -5,6 +5,7 @@ const darkMobileTheme: DefaultTheme = {
     main: "black",
     secondary: "white",
     accent: "red",
+    grey: "grey",
   },
   size: {
     xs4: "0.5rem",
@@ -32,6 +33,9 @@ const darkMobileTheme: DefaultTheme = {
     },
   },
   movie: {
+    size: "16rem",
+  },
+  loading: {
     size: "16rem",
   },
 };
