@@ -38,7 +38,7 @@ const darkMobileTheme: DefaultTheme = {
   },
   movie: {
     width: "100%",
-    height: "16rem",
+    height: "22rem",
   },
   loading: {
     size: "16rem",

@@ -48,7 +48,7 @@ function Main({ isLoading, data }: { isLoading: boolean; data: IMovies }) {
       {!isLoading && (
         <Items variants={ItemsVariants} initial="hidden" animate="visible">
           {data?.results.map((movie) => (
-            <Movie key={movie.id} {...movie} setMovieId={setMovieId} />
+            <Movie key={movie.id} movie={movie} setMovieId={setMovieId} />
           ))}
         </Items>
       )}

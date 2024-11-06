@@ -17,7 +17,7 @@ const Detail = styled(motion.div)`
   width: 80vw;
   max-width: 640px;
   height: 80dvh;
-  background-color: grey;
+  background-color: black;
   overflow: scroll;
 `;
 
@@ -29,15 +29,15 @@ const Poster = styled.div<{ $poster_path: string }>`
 `;
 
 const Title = styled.div`
-  font-size: 24px;
+  font-size: 1.5rem;
   text-align: center;
-  padding: 12px 0px;
+  padding-top: 2rem;
 `;
 
 const Overview = styled.div`
-  font-size: 16px;
-  padding: 12px;
-  line-height: 1.3rem;
+  font-size: 1rem;
+  padding: 2rem;
+  line-height: 1.4rem;
 `;
 
 const Exit = styled.div`
@@ -49,8 +49,8 @@ const Exit = styled.div`
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 50px;
-  height: 50px;
+  width: 3.5rem;
+  height: 3.5rem;
   color: black;
   font-size: 32px;
 `;
