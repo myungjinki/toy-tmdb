@@ -34,6 +34,7 @@ function Header() {
   const homeMatch = useMatch("/");
   const comingSoonMatch = useMatch("/coming-soon");
   const nowPlayingMatch = useMatch("/now-playing");
+  const likesMatch = useMatch("/likes");
   return (
     <Wrapper>
       <Nav>
@@ -49,6 +50,9 @@ function Header() {
           <Li>
             <Link to="/now-playing">now playing</Link>
             {nowPlayingMatch && <Circle layoutId="circle" />}
+          </Li>
+          <Li>
+            <Link to="/likes">❤️</Link>
           </Li>
         </Ul>
       </Nav>

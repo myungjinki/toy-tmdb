@@ -2,9 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import Movie from "../components/Movie";
-import Loading from "../components/Loading";
 import Modal from "../components/Modal";
-import { IMovies } from "../types";
+import { IMovie } from "../types";
 import Search from "./Search";
 
 const Wrapper = styled.main`
@@ -41,29 +40,26 @@ const ItemsVariants: Variants = {
   },
 };
 
-function Main({ isLoading, data }: { isLoading: boolean; data: IMovies }) {
+function Main({ movies }: { movies: IMovie[] }) {
   const [movieId, setMovieId] = useState(0);
   const [searchText, setSearchText] = useState("");
 
   return (
     <Wrapper>
       <Search searchText={searchText} setSearchText={setSearchText} />
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <Items variants={ItemsVariants} initial="hidden" animate="visible">
-          {data?.results
-            .filter((movie) => {
-              if (searchText) {
-                return movie.title.includes(searchText);
-              } else {
-                return true;
-              }
-            })
-            .map((movie) => (
-              <Movie key={movie.id} movie={movie} setMovieId={setMovieId} />
-            ))}
-        </Items>
-      )}
+      <Items variants={ItemsVariants} initial="hidden" animate="visible">
+        {movies
+          .filter((movie) => {
+            if (searchText) {
+              return movie.title.includes(searchText);
+            } else {
+              return true;
+            }
+          })
+          .map((movie) => (
+            <Movie key={movie.id} movie={movie} setMovieId={setMovieId} />
+          ))}
+      </Items>
       <AnimatePresence>
         {movieId !== 0 && (
           <Modal key={movieId} movieId={movieId} setMovieId={setMovieId} />

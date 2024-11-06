@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { motion, Variants } from "framer-motion";
 import { makeImagePath } from "../api";
 import { IMovie } from "../types";
+import { useRecoilState } from "recoil";
+import { likesState } from "../atoms";
 
 const Wrapper = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.opacity0};
@@ -10,6 +12,7 @@ const Wrapper = styled(motion.div)`
 `;
 
 const Poster = styled.div<{ $poster_path: string }>`
+  position: relative;
   background-image: url(${(props) => props.$poster_path});
   background-size: cover;
   width: 100%;
@@ -52,13 +55,15 @@ const Average = styled.div<{ $avg: number }>`
   border-radius: 4px;
 `;
 
-const Adult = styled.div`
+const Language = styled.div`
   background-color: aliceblue;
   padding: 4px;
   color: black;
   border-radius: 4px;
   text-transform: uppercase;
 `;
+
+const Likes = styled.div``;
 
 const MovieVariants: Variants = {
   hidden: {
@@ -76,14 +81,33 @@ function Movie({
   movie: IMovie;
   setMovieId: React.Dispatch<React.SetStateAction<number>>;
 }) {
+  const [likes, setLikes] = useRecoilState(likesState);
   const average = Math.floor(movie.vote_average * 10);
+  const index = likes.findIndex((like) => like.id === movie.id);
+  console.log(index);
+
+  function handleClick() {
+    if (index !== -1) {
+      setLikes((prev) => [
+        ...prev.slice(0, index),
+        ...prev.slice(index + 1, prev.length),
+      ]);
+    } else {
+      setLikes((prev) => [...prev, movie]);
+    }
+  }
+
   return (
-    <Wrapper variants={MovieVariants} onClick={() => setMovieId(movie.id)}>
-      <Poster $poster_path={makeImagePath(movie.poster_path)} />
+    <Wrapper variants={MovieVariants}>
+      <Poster
+        onClick={() => setMovieId(movie.id)}
+        $poster_path={makeImagePath(movie.poster_path)}
+      ></Poster>
       <Title>{movie.title}</Title>
       <Tags>
         <Average $avg={average}>{average}%</Average>
-        <Adult>{movie.original_language}</Adult>
+        <Language>{movie.original_language}</Language>
+        <Likes onClick={handleClick}>{index !== -1 ? "❤️" : "🤍"}</Likes>
       </Tags>
     </Wrapper>
   );

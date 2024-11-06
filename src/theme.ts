@@ -25,7 +25,7 @@ const darkMobileTheme: DefaultTheme = {
     top: "2rem",
     padding: "1rem",
     gap: "1rem",
-    fontSize: "1rem",
+    fontSize: "0.9rem",
     circle: "0.5rem",
   },
   home: {
