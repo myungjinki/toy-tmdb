@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { makeImagePath } from "../api";
 import { motion, Variants } from "framer-motion";
+import { IMovie } from "../types";
 
 const Wrapper = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.opacity0};
@@ -33,12 +34,7 @@ const MovieVariants: Variants = {
   },
 };
 
-interface IMovieProps {
-  title: string;
-  poster_path: string;
-}
-
-function Movie({ title, poster_path }: IMovieProps) {
+function Movie({ title, poster_path }: IMovie) {
   return (
     <Wrapper variants={MovieVariants}>
       <Poster $poster_path={makeImagePath(poster_path)} />
