@@ -11,14 +11,17 @@ const Wrapper = styled.main`
   align-items: center;
   margin-top: ${(props) => props.theme.home.wrapper.paddingTop};
   width: 100%;
+  min-height: 100%;
 `;
 
 const Items = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: ${(props) => props.theme.size.md};
+  padding: ${(props) => props.theme.size.md};
+  width: 100%;
 `;
 
 function Home() {
@@ -28,7 +31,7 @@ function Home() {
       <Suspense fallback={<Loading />}>
         <Items>
           {data?.results.map((movie) => (
-            <Movie key={movie.id} />
+            <Movie key={movie.id} {...movie} />
           ))}
         </Items>
       </Suspense>

@@ -9,6 +9,7 @@ declare module "styled-components" {
       secondary: string;
       accent: string;
       grey: string;
+      opacity0: string;
     };
     size: {
       xs4: string;
@@ -34,9 +35,13 @@ declare module "styled-components" {
       wrapper: {
         paddingTop: string;
       };
+      items: {
+        min: string;
+      };
     };
     movie: {
-      size: string;
+      width: string;
+      height: string;
     };
     loading: {
       size: string;

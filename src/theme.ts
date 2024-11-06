@@ -6,6 +6,7 @@ const darkMobileTheme: DefaultTheme = {
     secondary: "white",
     accent: "red",
     grey: "grey",
+    opacity0: "rgba(0, 0, 0, 0)",
   },
   size: {
     xs4: "0.5rem",
@@ -29,11 +30,15 @@ const darkMobileTheme: DefaultTheme = {
   },
   home: {
     wrapper: {
-      paddingTop: "8rem",
+      paddingTop: "6rem",
+    },
+    items: {
+      min: "8rem",
     },
   },
   movie: {
-    size: "16rem",
+    width: "100%",
+    height: "16rem",
   },
   loading: {
     size: "16rem",
