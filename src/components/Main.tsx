@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import Movie from "../components/Movie";
 import Loading from "../components/Loading";
 import Modal from "../components/Modal";
@@ -52,9 +52,11 @@ function Main({ isLoading, data }: { isLoading: boolean; data: IMovies }) {
           ))}
         </Items>
       )}
-      {movieId !== 0 && (
-        <Modal key={movieId} movieId={movieId} setMovieId={setMovieId} />
-      )}
+      <AnimatePresence>
+        {movieId !== 0 && (
+          <Modal key={movieId} movieId={movieId} setMovieId={setMovieId} />
+        )}
+      </AnimatePresence>
     </Wrapper>
   );
 }

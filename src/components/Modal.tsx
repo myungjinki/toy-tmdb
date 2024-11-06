@@ -1,5 +1,5 @@
 import { QueryCache, useQuery } from "@tanstack/react-query";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import styled from "styled-components";
 import { getMovie, makeImagePath } from "../api";
 
@@ -11,7 +11,7 @@ const Overlay = styled(motion.div)`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-const Detail = styled.div`
+const Detail = styled(motion.div)`
   position: fixed;
   top: 10dvh;
   width: 80vw;
@@ -40,6 +40,41 @@ const Overview = styled.div`
   line-height: 1.3rem;
 `;
 
+const Exit = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 50px;
+  height: 50px;
+  color: black;
+  font-size: 32px;
+`;
+
+const overlayVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+const detailVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
 function Modal({
   movieId,
   setMovieId,
@@ -59,14 +94,27 @@ function Modal({
   return (
     <>
       {!isLoading && (
-        <AnimatePresence>
-          <Overlay onClick={() => closeModal()} />
-          <Detail key={movieId}>
+        <>
+          <Overlay
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            onClick={() => closeModal()}
+          />
+          <Detail
+            variants={detailVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            key={movieId}
+          >
+            <Exit onClick={() => closeModal()}>X</Exit>
             <Poster $poster_path={makeImagePath(data.poster_path)} />
             <Title>{data.title}</Title>
             <Overview>{data.overview}</Overview>
           </Detail>
-        </AnimatePresence>
+        </>
       )}
     </>
   );
