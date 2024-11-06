@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { theme } from "./theme";
+import { darkTheme } from "./theme";
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
@@ -61,12 +61,24 @@ table {
 	border-spacing: 0;
 }
 
+/* Custom CSS */
+body {
+	background-color: ${(props) => props.theme.colors.main};
+	color: ${(props) => props.theme.colors.secondary}
+}
+a {
+	text-decoration: none;
+	&:visited {
+		color: inherit
+	}
+}
+
 `;
 
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
         <RouterProvider router={router} />
       </ThemeProvider>
