@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getNowPlaying } from "../api";
-import Main from "../components/Main";
+import List from "../components/List";
 import Loading from "../components/Loading";
 
 function NowPlaying() {
@@ -9,7 +9,7 @@ function NowPlaying() {
   return (
     <>
       {isLoading && <Loading />}
-      {!isLoading && <Main movies={data?.results} />}
+      {!isLoading && <List movies={data?.results} />}
     </>
   );
 }

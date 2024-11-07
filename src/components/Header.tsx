@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link, useMatch, useMatches } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.header`
@@ -34,7 +34,6 @@ function Header() {
   const homeMatch = useMatch("/");
   const comingSoonMatch = useMatch("/coming-soon");
   const nowPlayingMatch = useMatch("/now-playing");
-  const likesMatch = useMatch("/likes");
   return (
     <Wrapper>
       <Nav>

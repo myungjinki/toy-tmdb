@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import Movie from "../components/Movie";
-import Modal from "../components/Modal";
+import Movie from "./Movie";
+import Modal from "./Modal";
 import { IMovie } from "../types";
 import Search from "./Search";
 
@@ -40,7 +40,7 @@ const ItemsVariants: Variants = {
   },
 };
 
-function Main({ movies }: { movies: IMovie[] }) {
+function List({ movies }: { movies: IMovie[] }) {
   const [movieId, setMovieId] = useState(0);
   const [searchText, setSearchText] = useState("");
 
@@ -69,4 +69,4 @@ function Main({ movies }: { movies: IMovie[] }) {
   );
 }
 
-export default Main;
+export default List;

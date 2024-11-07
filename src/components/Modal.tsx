@@ -24,6 +24,7 @@ const Detail = styled(motion.div)`
 const Poster = styled.div<{ $poster_path: string }>`
   background-image: url(${(props) => props.$poster_path});
   background-size: cover;
+  background-position: center;
   width: 100%;
   height: 60%;
 `;

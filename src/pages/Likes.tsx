@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
-import Main from "../components/Main";
+import List from "../components/List";
 import { likesState } from "../atoms";
 
 function Likes() {
   const movies = useRecoilValue(likesState);
-  return <Main movies={movies} />;
+  return <List movies={movies} />;
 }
 
 export default Likes;
